@@ -10,5 +10,5 @@ do
     N=$((k * 10000))
     echo "Running for N = $N" >> number_crunching_gprof.out
     ./number_crunching $N
-    gprof number_crunching gmon.out --brief >> number_crunching_gprof.out
+    gprof number_crunching gmon.out | grep -A3 "time" >> number_crunching_gprof.out
 done
