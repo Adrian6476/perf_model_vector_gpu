@@ -9,32 +9,32 @@ Region function_a, Group 1: L3
 +-------------------+------------+
 |    Region Info    | HWThread 0 |
 +-------------------+------------+
-| RDTSC Runtime [s] |   0.342810 |
+| RDTSC Runtime [s] |   0.343499 |
 |     call count    |          1 |
 +-------------------+------------+
 
 +----------------------+---------+------------+
 |         Event        | Counter | HWThread 0 |
 +----------------------+---------+------------+
-|   ACTUAL_CPU_CLOCK   |  FIXC1  | 1143667000 |
-|     MAX_CPU_CLOCK    |  FIXC2  |  684540400 |
+|   ACTUAL_CPU_CLOCK   |  FIXC1  | 1145341000 |
+|     MAX_CPU_CLOCK    |  FIXC2  |  685933400 |
 | RETIRED_INSTRUCTIONS |   PMC0  | 3200208000 |
-|  CPU_CLOCKS_UNHALTED |   PMC1  | 1139727000 |
-|       L3_ACCESS      |  CPMC0  |   12695020 |
-|        L3_MISS       |  CPMC1  |   12538190 |
+|  CPU_CLOCKS_UNHALTED |   PMC1  | 1139853000 |
+|       L3_ACCESS      |  CPMC0  |   12802600 |
+|        L3_MISS       |  CPMC1  |   12602170 |
 +----------------------+---------+------------+
 
 +--------------------------------+------------+
 |             Metric             | HWThread 0 |
 +--------------------------------+------------+
-|       Runtime (RDTSC) [s]      |     0.3428 |
-|      Runtime unhalted [s]      |     0.5729 |
-|           Clock [MHz]          |  3335.1195 |
-|               CPI              |     0.3561 |
-| L3 access bandwidth [MBytes/s] |  2370.0616 |
-| L3 access data volume [GBytes] |     0.8125 |
-|       L3 access rate [%]       |     0.3967 |
-|        L3 miss rate [%]        |     0.3918 |
-|        L3 miss ratio [%]       |    98.7646 |
+|       Runtime (RDTSC) [s]      |     0.3435 |
+|      Runtime unhalted [s]      |     0.5738 |
+|           Clock [MHz]          |  3333.1933 |
+|               CPI              |     0.3562 |
+| L3 access bandwidth [MBytes/s] |  2385.3517 |
+| L3 access data volume [GBytes] |     0.8194 |
+|       L3 access rate [%]       |     0.4001 |
+|        L3 miss rate [%]        |     0.3938 |
+|        L3 miss ratio [%]       |    98.4345 |
 +--------------------------------+------------+
 

@@ -9,17 +9,17 @@ Region function_a, Group 1: FLOPS_DP
 +-------------------+------------+
 |    Region Info    | HWThread 0 |
 +-------------------+------------+
-| RDTSC Runtime [s] |   0.345196 |
+| RDTSC Runtime [s] |   0.344367 |
 |     call count    |          1 |
 +-------------------+------------+
 
 +---------------------------+---------+------------+
 |           Event           | Counter | HWThread 0 |
 +---------------------------+---------+------------+
-|      ACTUAL_CPU_CLOCK     |  FIXC1  | 1143907000 |
-|       MAX_CPU_CLOCK       |  FIXC2  |  689314700 |
+|      ACTUAL_CPU_CLOCK     |  FIXC1  | 1145961000 |
+|       MAX_CPU_CLOCK       |  FIXC2  |  687661800 |
 |    RETIRED_INSTRUCTIONS   |   PMC0  | 3200208000 |
-|    CPU_CLOCKS_UNHALTED    |   PMC1  | 1139395000 |
+|    CPU_CLOCKS_UNHALTED    |   PMC1  | 1141180000 |
 | RETIRED_SSE_AVX_FLOPS_ALL |   PMC2  |  200000000 |
 |           MERGE           |   PMC3  |          0 |
 +---------------------------+---------+------------+
@@ -27,10 +27,10 @@ Region function_a, Group 1: FLOPS_DP
 +----------------------+------------+
 |        Metric        | HWThread 0 |
 +----------------------+------------+
-|  Runtime (RDTSC) [s] |     0.3452 |
-| Runtime unhalted [s] |     0.5730 |
-|      Clock [MHz]     |  3312.7115 |
-|          CPI         |     0.3560 |
-|     DP [MFLOP/s]     |   579.3810 |
+|  Runtime (RDTSC) [s] |     0.3444 |
+| Runtime unhalted [s] |     0.5741 |
+|      Clock [MHz]     |  3326.6421 |
+|          CPI         |     0.3566 |
+|     DP [MFLOP/s]     |   580.7757 |
 +----------------------+------------+
 

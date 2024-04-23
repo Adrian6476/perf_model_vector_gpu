@@ -9,29 +9,29 @@ Region function_a, Group 1: MEM
 +-------------------+------------+
 |    Region Info    | HWThread 0 |
 +-------------------+------------+
-| RDTSC Runtime [s] |   0.344128 |
+| RDTSC Runtime [s] |   0.344393 |
 |     call count    |          1 |
 +-------------------+------------+
 
 +----------------------+---------+------------+
 |         Event        | Counter | HWThread 0 |
 +----------------------+---------+------------+
-|   ACTUAL_CPU_CLOCK   |  FIXC1  | 1144146000 |
-|     MAX_CPU_CLOCK    |  FIXC2  |  687197100 |
+|   ACTUAL_CPU_CLOCK   |  FIXC1  | 1143969000 |
+|     MAX_CPU_CLOCK    |  FIXC2  |  687717400 |
 | RETIRED_INSTRUCTIONS |   PMC0  | 3200208000 |
-|  CPU_CLOCKS_UNHALTED |   PMC1  | 1139525000 |
-|    DRAM_CHANNEL_0    |   DFC0  |    6462332 |
-|    DRAM_CHANNEL_1    |   DFC1  |    6464250 |
+|  CPU_CLOCKS_UNHALTED |   PMC1  | 1139623000 |
+|    DRAM_CHANNEL_0    |   DFC0  |    6608612 |
+|    DRAM_CHANNEL_1    |   DFC1  |    6610215 |
 +----------------------+---------+------------+
 
 +-----------------------------+------------+
 |            Metric           | HWThread 0 |
 +-----------------------------+------------+
-|     Runtime (RDTSC) [s]     |     0.3441 |
-|     Runtime unhalted [s]    |     0.5732 |
-|         Clock [MHz]         |  3323.6030 |
+|     Runtime (RDTSC) [s]     |     0.3444 |
+|     Runtime unhalted [s]    |     0.5731 |
+|         Clock [MHz]         |  3320.5919 |
 |             CPI             |     0.3561 |
-| Memory bandwidth [MBytes/s] |  2404.0482 |
-| Memory data volume [GBytes] |     0.8273 |
+| Memory bandwidth [MBytes/s] |  2456.5124 |
+| Memory data volume [GBytes] |     0.8460 |
 +-----------------------------+------------+
 

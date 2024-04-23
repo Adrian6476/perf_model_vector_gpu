@@ -9,28 +9,28 @@ Region function_a, Group 1: DATA
 +-------------------+------------+
 |    Region Info    | HWThread 0 |
 +-------------------+------------+
-| RDTSC Runtime [s] |   0.344015 |
+| RDTSC Runtime [s] |   0.343963 |
 |     call count    |          1 |
 +-------------------+------------+
 
 +----------------------+---------+------------+
 |         Event        | Counter | HWThread 0 |
 +----------------------+---------+------------+
-|   ACTUAL_CPU_CLOCK   |  FIXC1  | 1144196000 |
-|     MAX_CPU_CLOCK    |  FIXC2  |  686976400 |
+|   ACTUAL_CPU_CLOCK   |  FIXC1  | 1144656000 |
+|     MAX_CPU_CLOCK    |  FIXC2  |  686869100 |
 | RETIRED_INSTRUCTIONS |   PMC0  | 3200208000 |
-|  CPU_CLOCKS_UNHALTED |   PMC1  | 1139781000 |
-|   LS_DISPATCH_LOADS  |   PMC2  | 1503074000 |
-|  LS_DISPATCH_STORES  |   PMC3  |  100221200 |
+|  CPU_CLOCKS_UNHALTED |   PMC1  | 1139987000 |
+|   LS_DISPATCH_LOADS  |   PMC2  | 1503063000 |
+|  LS_DISPATCH_STORES  |   PMC3  |  100220600 |
 +----------------------+---------+------------+
 
 +----------------------+------------+
 |        Metric        | HWThread 0 |
 +----------------------+------------+
 |  Runtime (RDTSC) [s] |     0.3440 |
-| Runtime unhalted [s] |     0.5732 |
-|      Clock [MHz]     |  3324.7813 |
+| Runtime unhalted [s] |     0.5734 |
+|      Clock [MHz]     |  3326.6837 |
 |          CPI         |     0.3562 |
-|  Load to store ratio |    14.9976 |
+|  Load to store ratio |    14.9975 |
 +----------------------+------------+
 
