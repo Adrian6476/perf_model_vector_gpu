@@ -1,0 +1,40 @@
+--------------------------------------------------------------------------------
+CPU name:	AMD EPYC 7702 64-Core Processor                
+CPU type:	AMD K17 (Zen2) architecture
+CPU clock:	2.00 GHz
+--------------------------------------------------------------------------------
+For correctness checking, partial results have been written to partial_results.out
+--------------------------------------------------------------------------------
+Region function_a, Group 1: L3
++-------------------+------------+
+|    Region Info    | HWThread 0 |
++-------------------+------------+
+| RDTSC Runtime [s] |   0.342810 |
+|     call count    |          1 |
++-------------------+------------+
+
++----------------------+---------+------------+
+|         Event        | Counter | HWThread 0 |
++----------------------+---------+------------+
+|   ACTUAL_CPU_CLOCK   |  FIXC1  | 1143667000 |
+|     MAX_CPU_CLOCK    |  FIXC2  |  684540400 |
+| RETIRED_INSTRUCTIONS |   PMC0  | 3200208000 |
+|  CPU_CLOCKS_UNHALTED |   PMC1  | 1139727000 |
+|       L3_ACCESS      |  CPMC0  |   12695020 |
+|        L3_MISS       |  CPMC1  |   12538190 |
++----------------------+---------+------------+
+
++--------------------------------+------------+
+|             Metric             | HWThread 0 |
++--------------------------------+------------+
+|       Runtime (RDTSC) [s]      |     0.3428 |
+|      Runtime unhalted [s]      |     0.5729 |
+|           Clock [MHz]          |  3335.1195 |
+|               CPI              |     0.3561 |
+| L3 access bandwidth [MBytes/s] |  2370.0616 |
+| L3 access data volume [GBytes] |     0.8125 |
+|       L3 access rate [%]       |     0.3967 |
+|        L3 miss rate [%]        |     0.3918 |
+|        L3 miss ratio [%]       |    98.7646 |
++--------------------------------+------------+
+

@@ -1,0 +1,40 @@
+--------------------------------------------------------------------------------
+CPU name:	AMD EPYC 7702 64-Core Processor                
+CPU type:	AMD K17 (Zen2) architecture
+CPU clock:	2.00 GHz
+--------------------------------------------------------------------------------
+For correctness checking, partial results have been written to partial_results.out
+--------------------------------------------------------------------------------
+Region function_a, Group 1: CACHE
++-------------------+------------+
+|    Region Info    | HWThread 0 |
++-------------------+------------+
+| RDTSC Runtime [s] |   0.344376 |
+|     call count    |          1 |
++-------------------+------------+
+
++------------------------+---------+------------+
+|          Event         | Counter | HWThread 0 |
++------------------------+---------+------------+
+|    ACTUAL_CPU_CLOCK    |  FIXC1  | 1144263000 |
+|      MAX_CPU_CLOCK     |  FIXC2  |  687693300 |
+|  RETIRED_INSTRUCTIONS  |   PMC0  | 3200208000 |
+|   CPU_CLOCKS_UNHALTED  |   PMC1  | 1139817000 |
+|   DATA_CACHE_ACCESSES  |   PMC2  | 1702308000 |
+| DATA_CACHE_REFILLS_ALL |   PMC3  |       8449 |
++------------------------+---------+------------+
+
++-------------------------+--------------+
+|          Metric         |  HWThread 0  |
++-------------------------+--------------+
+|   Runtime (RDTSC) [s]   |       0.3444 |
+|   Runtime unhalted [s]  |       0.5732 |
+|       Clock [MHz]       |    3321.5634 |
+|           CPI           |       0.3562 |
+|   data cache requests   |   1702308000 |
+| data cache request rate |       0.5319 |
+|    data cache misses    |         8449 |
+|   data cache miss rate  | 2.640141e-06 |
+|  data cache miss ratio  | 4.963262e-06 |
++-------------------------+--------------+
+

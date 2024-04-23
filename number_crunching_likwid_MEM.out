@@ -1,0 +1,37 @@
+--------------------------------------------------------------------------------
+CPU name:	AMD EPYC 7702 64-Core Processor                
+CPU type:	AMD K17 (Zen2) architecture
+CPU clock:	2.00 GHz
+--------------------------------------------------------------------------------
+For correctness checking, partial results have been written to partial_results.out
+--------------------------------------------------------------------------------
+Region function_a, Group 1: MEM
++-------------------+------------+
+|    Region Info    | HWThread 0 |
++-------------------+------------+
+| RDTSC Runtime [s] |   0.344128 |
+|     call count    |          1 |
++-------------------+------------+
+
++----------------------+---------+------------+
+|         Event        | Counter | HWThread 0 |
++----------------------+---------+------------+
+|   ACTUAL_CPU_CLOCK   |  FIXC1  | 1144146000 |
+|     MAX_CPU_CLOCK    |  FIXC2  |  687197100 |
+| RETIRED_INSTRUCTIONS |   PMC0  | 3200208000 |
+|  CPU_CLOCKS_UNHALTED |   PMC1  | 1139525000 |
+|    DRAM_CHANNEL_0    |   DFC0  |    6462332 |
+|    DRAM_CHANNEL_1    |   DFC1  |    6464250 |
++----------------------+---------+------------+
+
++-----------------------------+------------+
+|            Metric           | HWThread 0 |
++-----------------------------+------------+
+|     Runtime (RDTSC) [s]     |     0.3441 |
+|     Runtime unhalted [s]    |     0.5732 |
+|         Clock [MHz]         |  3323.6030 |
+|             CPI             |     0.3561 |
+| Memory bandwidth [MBytes/s] |  2404.0482 |
+| Memory data volume [GBytes] |     0.8273 |
++-----------------------------+------------+
+

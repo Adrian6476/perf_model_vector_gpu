@@ -1,0 +1,16 @@
+ERROR - [./src/perfgroup.c:perfgroup_readGroup:858] No such file or directory.
+Cannot read group file 3650.txt. Searched in /apps/developers/libraries/likwid/5.2.0/1/default/share/likwid/perfgroups/zen2/3650.txt and /home/dgwz78/.likwid/groups/zen2/3650.txt
+ERROR - [./src/perfmon.c:perfmon_addEventSet:2189] No such file or directory.
+Access to performance group 3650 not allowed
+ERROR - [./src/perfgroup.c:perfgroup_readGroup:858] No such file or directory.
+Cannot read group file 6423.txt. Searched in /apps/developers/libraries/likwid/5.2.0/1/default/share/likwid/perfgroups/zen2/6423.txt and /home/dgwz78/.likwid/groups/zen2/6423.txt
+ERROR - [./src/perfmon.c:perfmon_addEventSet:2189] No such file or directory.
+Access to performance group 6423 not allowed
+ERROR - [./src/perfgroup.c:perfgroup_readGroup:858] No such file or directory.
+Cannot read group file 7847.txt. Searched in /apps/developers/libraries/likwid/5.2.0/1/default/share/likwid/perfgroups/zen2/7847.txt and /home/dgwz78/.likwid/groups/zen2/7847.txt
+ERROR - [./src/perfmon.c:perfmon_addEventSet:2189] No such file or directory.
+Access to performance group 7847 not allowed
+ERROR - [./src/perfgroup.c:perfgroup_readGroup:858] No such file or directory.
+Cannot read group file 8935.txt. Searched in /apps/developers/libraries/likwid/5.2.0/1/default/share/likwid/perfgroups/zen2/8935.txt and /home/dgwz78/.likwid/groups/zen2/8935.txt
+ERROR - [./src/perfmon.c:perfmon_addEventSet:2189] No such file or directory.
+Access to performance group 8935 not allowedcdqwdqwdcc
