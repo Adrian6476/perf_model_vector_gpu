@@ -14,7 +14,7 @@ plt.style.use('ggplot')
 
 # Setting the font to 'Liberation Sans', which is similar to Arial
 mpl.rcParams['font.family'] = 'Liberation Sans'
-mpl.rcParams['font.size'] = 10  # Adjust based on the journal's requirements
+mpl.rcParams['font.size'] = 10 
 
 # Create figure and plot area
 fig, ax = plt.subplots(figsize=(6, 4), dpi=300)  # Adjust size as per journal's requirements
