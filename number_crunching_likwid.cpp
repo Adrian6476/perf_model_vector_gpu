@@ -2,29 +2,20 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
-extern "C" {
 #include <likwid.h>
-}
 
 
-double* function_a(const double* A, const double* x, const int N) {
-    double* y = new double[N];
-
-    LIKWID_MARKER_START("function_a");
-
-    for (unsigned int i = 0; i < N; i++) {
-        y[i] = 0;
+double *function_a(const double *A, const double *x, const int N) {
+  double *y = new double[N];
+  for (unsigned int i = 0; i < N; i++) {
+    y[i] = 0;
+  }
+  for (unsigned int i = 0; i < N; i++) {
+    for (unsigned int j = 0; j < N; j++) {
+      y[i] += A[i * N + j] * x[i];
     }
-
-    for (unsigned int i = 0; i < N; i++) {
-        for (unsigned int j = 0; j < N; j++) {
-            y[i] += A[i * N + j] * x[i];
-        }
-    }
-
-    LIKWID_MARKER_STOP("function_a");
-
-    return y;
+  }
+  return y;
 }
 
 double *function_b(const double a, const double *u, const double *v, const int N) {
@@ -118,6 +109,8 @@ int main(int argc, char **argv) {
     exit(0);
   }
 
+  LIKWID_MARKER_INIT;
+
   double *u = new double[N];
   double *v = new double[N];
   double *A = new double[N * N];
@@ -126,7 +119,11 @@ int main(int argc, char **argv) {
 
   double s = function_d(u, v, N);
   double *x = function_b(2, u, v, N);
+
+  LIKWID_MARKER_START("function_a");
   double *y = function_a(A, x, N);
+  LIKWID_MARKER_STOP("function_a");
+
   double *z = function_c(s, x, y, N);
 
   std::ofstream File("partial_results.out");
@@ -142,6 +139,8 @@ int main(int argc, char **argv) {
   delete[] x;
   delete[] y;
   delete[] z;
+
+  LIKWID_MARKER_CLOSE;
 
   EXIT_SUCCESS;
 }
