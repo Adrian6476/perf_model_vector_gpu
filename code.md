@@ -1,3 +1,5 @@
+<!-- Code from number_crunching.cpp -->
+```cpp
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -135,3 +137,15 @@ int main(int argc, char **argv) {
 
   EXIT_SUCCESS;
 }
+```
+<!-- Code from Makefile -->
+```make
+CXX = g++
+CXXFLAGS = -O3 -march=native
+
+number_crunching: number_crunching.cpp
+	     $(CXX) $(CXXFLAGS) -o number_crunching number_crunching.cpp
+
+clean:
+	rm number_crunching
+```

@@ -1,0 +1,1311 @@
+Performance analysis with gprof:
+Running for N = 10000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 52.40      0.35     0.35        1   351.07   351.07  function_a(double const*, double const*, int)
+ 47.91      0.67     0.32        1   320.97   320.97  init_datastructures(double*, double*, double*, int)
+  0.00      0.67     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00      0.67     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00      0.67     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00      0.67     0.00        1     0.00     0.00  function_c(double, double const*, double const*, int)
+  0.00      0.67     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00      0.67     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00      0.67     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.67     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00      0.67     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00      0.67     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00      0.67     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00      0.67     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00      0.67     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00      0.67     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00      0.67     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00      0.67     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00      0.67     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00      0.67     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00      0.67     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 1.49% of 0.67 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    0.67                 main [1]
+                0.35    0.00       1/1           function_a(double const*, double const*, int) [2]
+                0.32    0.00       1/1           init_datastructures(double*, double*, double*, int) [3]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [12]
+                0.00    0.00       1/1           function_c(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+                0.35    0.00       1/1           main [1]
+[2]     52.2    0.35    0.00       1         function_a(double const*, double const*, int) [2]
+-----------------------------------------------
+                0.32    0.00       1/1           main [1]
+[3]     47.8    0.32    0.00       1         init_datastructures(double*, double*, double*, int) [3]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[10]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[11]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_c(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [11] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [10] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [2] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [12] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  [13] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [3] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+Running for N = 20000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 51.84      1.38     1.38        1     1.38     1.38  function_a(double const*, double const*, int)
+ 48.46      2.68     1.29        1     1.29     1.29  init_datastructures(double*, double*, double*, int)
+  0.00      2.68     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00      2.68     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00      2.68     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00      2.68     0.00        1     0.00     0.00  function_c(double, double const*, double const*, int)
+  0.00      2.68     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00      2.68     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00      2.68     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      2.68     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00      2.68     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00      2.68     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00      2.68     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00      2.68     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00      2.68     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00      2.68     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00      2.68     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00      2.68     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00      2.68     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00      2.68     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00      2.68     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.37% of 2.68 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    2.68                 main [1]
+                1.38    0.00       1/1           function_a(double const*, double const*, int) [2]
+                1.29    0.00       1/1           init_datastructures(double*, double*, double*, int) [3]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [12]
+                0.00    0.00       1/1           function_c(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+                1.38    0.00       1/1           main [1]
+[2]     51.7    1.38    0.00       1         function_a(double const*, double const*, int) [2]
+-----------------------------------------------
+                1.29    0.00       1/1           main [1]
+[3]     48.3    1.29    0.00       1         init_datastructures(double*, double*, double*, int) [3]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[10]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[11]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_c(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [11] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [10] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [2] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [12] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  [13] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [3] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+Running for N = 30000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 54.79      3.79     3.79        1     3.79     3.79  init_datastructures(double*, double*, double*, int)
+ 45.51      6.94     3.15        1     3.15     3.15  function_a(double const*, double const*, int)
+  0.00      6.94     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00      6.94     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00      6.94     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00      6.94     0.00        1     0.00     0.00  function_c(double, double const*, double const*, int)
+  0.00      6.94     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00      6.94     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00      6.94     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      6.94     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00      6.94     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00      6.94     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00      6.94     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00      6.94     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00      6.94     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00      6.94     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00      6.94     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00      6.94     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00      6.94     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00      6.94     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00      6.94     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.14% of 6.94 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    6.94                 main [1]
+                3.79    0.00       1/1           init_datastructures(double*, double*, double*, int) [2]
+                3.15    0.00       1/1           function_a(double const*, double const*, int) [3]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [12]
+                0.00    0.00       1/1           function_c(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+                3.79    0.00       1/1           main [1]
+[2]     54.6    3.79    0.00       1         init_datastructures(double*, double*, double*, int) [2]
+-----------------------------------------------
+                3.15    0.00       1/1           main [1]
+[3]     45.4    3.15    0.00       1         function_a(double const*, double const*, int) [3]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[10]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[11]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_c(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [11] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [10] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [3] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [12] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  [13] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [2] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+Running for N = 40000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 52.44      6.10     6.10        1     6.10     6.10  init_datastructures(double*, double*, double*, int)
+ 47.87     11.67     5.57        1     5.57     5.57  function_a(double const*, double const*, int)
+  0.00     11.67     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     11.67     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00     11.67     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00     11.67     0.00        1     0.00     0.00  function_c(double, double const*, double const*, int)
+  0.00     11.67     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00     11.67     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00     11.67     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     11.67     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00     11.67     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00     11.67     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     11.67     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00     11.67     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00     11.67     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     11.67     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00     11.67     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     11.67     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     11.67     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00     11.67     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00     11.67     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.09% of 11.67 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00   11.67                 main [1]
+                6.10    0.00       1/1           init_datastructures(double*, double*, double*, int) [2]
+                5.57    0.00       1/1           function_a(double const*, double const*, int) [3]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [12]
+                0.00    0.00       1/1           function_c(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+                6.10    0.00       1/1           main [1]
+[2]     52.3    6.10    0.00       1         init_datastructures(double*, double*, double*, int) [2]
+-----------------------------------------------
+                5.57    0.00       1/1           main [1]
+[3]     47.7    5.57    0.00       1         function_a(double const*, double const*, int) [3]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[10]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[11]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_c(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [11] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [10] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [3] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [12] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  [13] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [2] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+Running for N = 50000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 53.42      9.91     9.91        1     9.91     9.91  init_datastructures(double*, double*, double*, int)
+ 46.88     18.61     8.70        1     8.70     8.70  function_a(double const*, double const*, int)
+  0.00     18.61     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     18.61     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00     18.61     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00     18.61     0.00        1     0.00     0.00  function_c(double, double const*, double const*, int)
+  0.00     18.61     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00     18.61     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00     18.61     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     18.61     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00     18.61     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00     18.61     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     18.61     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00     18.61     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00     18.61     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     18.61     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00     18.61     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     18.61     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     18.61     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00     18.61     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00     18.61     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.05% of 18.61 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00   18.61                 main [1]
+                9.91    0.00       1/1           init_datastructures(double*, double*, double*, int) [2]
+                8.70    0.00       1/1           function_a(double const*, double const*, int) [3]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [12]
+                0.00    0.00       1/1           function_c(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+                9.91    0.00       1/1           main [1]
+[2]     53.3    9.91    0.00       1         init_datastructures(double*, double*, double*, int) [2]
+-----------------------------------------------
+                8.70    0.00       1/1           main [1]
+[3]     46.7    8.70    0.00       1         function_a(double const*, double const*, int) [3]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[10]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[11]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_c(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [11] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [10] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [3] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [12] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  [13] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [2] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+Running for N = 60000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 54.07     14.67    14.67        1    14.67    14.67  init_datastructures(double*, double*, double*, int)
+ 46.20     27.21    12.54        1    12.54    12.54  function_a(double const*, double const*, int)
+  0.04     27.22     0.01        1     0.01     0.01  function_c(double, double const*, double const*, int)
+  0.00     27.22     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     27.22     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00     27.22     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00     27.22     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00     27.22     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00     27.22     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     27.22     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00     27.22     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00     27.22     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     27.22     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00     27.22     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00     27.22     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     27.22     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00     27.22     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     27.22     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     27.22     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00     27.22     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00     27.22     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.04% of 27.22 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00   27.22                 main [1]
+               14.67    0.00       1/1           init_datastructures(double*, double*, double*, int) [2]
+               12.54    0.00       1/1           function_a(double const*, double const*, int) [3]
+                0.01    0.00       1/1           function_c(double, double const*, double const*, int) [4]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+               14.67    0.00       1/1           main [1]
+[2]     53.9   14.67    0.00       1         init_datastructures(double*, double*, double*, int) [2]
+-----------------------------------------------
+               12.54    0.00       1/1           main [1]
+[3]     46.1   12.54    0.00       1         function_a(double const*, double const*, int) [3]
+-----------------------------------------------
+                0.01    0.00       1/1           main [1]
+[4]      0.0    0.01    0.00       1         function_c(double, double const*, double const*, int) [4]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[11]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [11]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[12]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [12]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [12]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [11]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [11]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [12] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [11] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [3] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [13] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+   [4] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [2] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+Running for N = 70000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 89.36     17.12    17.12        1    17.12    17.12  function_a(double const*, double const*, int)
+ 10.94     19.22     2.10        1     2.10     2.10  init_datastructures(double*, double*, double*, int)
+  0.00     19.22     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     19.22     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00     19.22     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00     19.22     0.00        1     0.00     0.00  function_c(double, double const*, double const*, int)
+  0.00     19.22     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00     19.22     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00     19.22     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     19.22     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00     19.22     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00     19.22     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     19.22     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00     19.22     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00     19.22     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     19.22     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00     19.22     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     19.22     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     19.22     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00     19.22     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00     19.22     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.05% of 19.22 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00   19.22                 main [1]
+               17.12    0.00       1/1           function_a(double const*, double const*, int) [2]
+                2.10    0.00       1/1           init_datastructures(double*, double*, double*, int) [3]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [12]
+                0.00    0.00       1/1           function_c(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+               17.12    0.00       1/1           main [1]
+[2]     89.1   17.12    0.00       1         function_a(double const*, double const*, int) [2]
+-----------------------------------------------
+                2.10    0.00       1/1           main [1]
+[3]     10.9    2.10    0.00       1         init_datastructures(double*, double*, double*, int) [3]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[10]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[11]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_c(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [11] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [10] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [2] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [12] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  [13] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [3] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+Running for N = 80000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 72.88     22.58    22.58        1    22.58    22.58  function_a(double const*, double const*, int)
+ 27.42     31.07     8.50        1     8.50     8.50  init_datastructures(double*, double*, double*, int)
+  0.00     31.07     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     31.07     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00     31.07     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00     31.07     0.00        1     0.00     0.00  function_c(double, double const*, double const*, int)
+  0.00     31.07     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00     31.07     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00     31.07     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     31.07     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00     31.07     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00     31.07     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     31.07     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00     31.07     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00     31.07     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     31.07     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00     31.07     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     31.07     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     31.07     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00     31.07     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00     31.07     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.03% of 31.07 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00   31.07                 main [1]
+               22.58    0.00       1/1           function_a(double const*, double const*, int) [2]
+                8.50    0.00       1/1           init_datastructures(double*, double*, double*, int) [3]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [12]
+                0.00    0.00       1/1           function_c(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+               22.58    0.00       1/1           main [1]
+[2]     72.7   22.58    0.00       1         function_a(double const*, double const*, int) [2]
+-----------------------------------------------
+                8.50    0.00       1/1           main [1]
+[3]     27.3    8.50    0.00       1         init_datastructures(double*, double*, double*, int) [3]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[10]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[11]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_c(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [11] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [10] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [2] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [12] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  [13] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [3] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+Running for N = 90000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 66.66     31.28    31.28        1    31.28    31.28  function_a(double const*, double const*, int)
+ 33.64     47.07    15.79        1    15.79    15.79  init_datastructures(double*, double*, double*, int)
+  0.00     47.07     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     47.07     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00     47.07     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00     47.07     0.00        1     0.00     0.00  function_c(double, double const*, double const*, int)
+  0.00     47.07     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00     47.07     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00     47.07     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     47.07     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00     47.07     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00     47.07     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     47.07     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00     47.07     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00     47.07     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     47.07     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00     47.07     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     47.07     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     47.07     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00     47.07     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00     47.07     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.02% of 47.07 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00   47.07                 main [1]
+               31.28    0.00       1/1           function_a(double const*, double const*, int) [2]
+               15.79    0.00       1/1           init_datastructures(double*, double*, double*, int) [3]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [12]
+                0.00    0.00       1/1           function_c(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+               31.28    0.00       1/1           main [1]
+[2]     66.5   31.28    0.00       1         function_a(double const*, double const*, int) [2]
+-----------------------------------------------
+               15.79    0.00       1/1           main [1]
+[3]     33.5   15.79    0.00       1         init_datastructures(double*, double*, double*, int) [3]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[10]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[11]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_c(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [11] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [10] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [2] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [12] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  [13] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [3] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+Running for N = 100000
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 85.43     34.74    34.74        1    34.74    34.74  function_a(double const*, double const*, int)
+ 14.88     40.78     6.05        1     6.05     6.05  init_datastructures(double*, double*, double*, int)
+  0.00     40.78     0.00        2     0.00     0.00  std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     40.78     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10function_aPKdS0_i
+  0.00     40.78     0.00        1     0.00     0.00  function_b(double, double const*, double const*, int)
+  0.00     40.78     0.00        1     0.00     0.00  function_c(double, double const*, double const*, int)
+  0.00     40.78     0.00        1     0.00     0.00  function_d(double const*, double const*, int)
+  0.00     40.78     0.00        1     0.00     0.00  print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&)
+  0.00     40.78     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00     40.78     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00     40.78     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00     40.78     0.00        1     0.00     0.00  std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     40.78     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00     40.78     0.00        1     0.00     0.00  long long const& std::min<long long>(long long const&, long long const&)
+  0.00     40.78     0.00        1     0.00     0.00  std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     40.78     0.00        1     0.00     0.00  std::operator~(std::_Ios_Fmtflags)
+  0.00     40.78     0.00        1     0.00     0.00  std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  0.00     40.78     0.00        1     0.00     0.00  std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  0.00     40.78     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00     40.78     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00     40.78     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.02% of 40.78 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00   40.78                 main [1]
+               34.74    0.00       1/1           function_a(double const*, double const*, int) [2]
+                6.05    0.00       1/1           init_datastructures(double*, double*, double*, int) [3]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           function_d(double const*, double const*, int) [14]
+                0.00    0.00       1/1           function_b(double, double const*, double const*, int) [12]
+                0.00    0.00       1/1           function_c(double, double const*, double const*, int) [13]
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+-----------------------------------------------
+               34.74    0.00       1/1           main [1]
+[2]     85.2   34.74    0.00       1         function_a(double const*, double const*, int) [2]
+-----------------------------------------------
+                6.05    0.00       1/1           main [1]
+[3]     14.8    6.05    0.00       1         init_datastructures(double*, double*, double*, int) [3]
+-----------------------------------------------
+                0.00    0.00       1/2           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[10]     0.0    0.00    0.00       2         std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [35]
+[11]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         function_b(double, double const*, double const*, int) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         function_c(double, double const*, double const*, int) [13]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[14]     0.0    0.00    0.00       1         function_d(double const*, double const*, int) [14]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+                0.00    0.00       1/1           long long const& std::min<long long>(long long const&, long long const&) [21]
+                0.00    0.00       1/1           std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z10function_aPKdS0_i [11]
+[16]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [16]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+[17]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[18]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [18]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+-----------------------------------------------
+                0.00    0.00       1/1           std::fixed(std::ios_base&) [29]
+[19]     0.0    0.00    0.00       1         std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+                0.00    0.00       1/1           std::operator~(std::_Ios_Fmtflags) [23]
+                0.00    0.00       1/1           std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[20]     0.0    0.00    0.00       1         std::setprecision(int) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [15]
+[21]     0.0    0.00    0.00       1         long long const& std::min<long long>(long long const&, long long const&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[22]     0.0    0.00    0.00       1         std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [22]
+                0.00    0.00       1/2           std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [10]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[23]     0.0    0.00    0.00       1         std::operator~(std::_Ios_Fmtflags) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [19]
+[24]     0.0    0.00    0.00       1         std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+                0.00    0.00       1/1           std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [24]
+[25]     0.0    0.00    0.00       1         std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[26]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [26]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[27]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [17]
+[28]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [28]
+-----------------------------------------------
+
+Index by function name
+
+  [11] _GLOBAL__sub_I__Z10function_aPKdS0_i [16] __static_initialization_and_destruction_0(int, int) [10] std::operator&(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+   [2] function_a(double const*, double const*, int) [17] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [23] std::operator~(std::_Ios_Fmtflags)
+  [12] function_b(double, double const*, double const*, int) [18] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [24] std::operator|=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags)
+  [13] function_c(double, double const*, double const*, int) [19] std::ios_base::setf(std::_Ios_Fmtflags, std::_Ios_Fmtflags) [25] std::operator|(std::_Ios_Fmtflags, std::_Ios_Fmtflags)
+  [14] function_d(double const*, double const*, int) [20] std::setprecision(int) [26] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+   [3] init_datastructures(double*, double*, double*, int) [21] long long const& std::min<long long>(long long const&, long long const&) [27] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  [15] print_results_to_file(double, double const*, double const*, double const*, double const*, long long, std::basic_ofstream<char, std::char_traits<char> >&) [22] std::operator&=(std::_Ios_Fmtflags&, std::_Ios_Fmtflags) [28] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
