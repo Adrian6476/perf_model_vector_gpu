@@ -1,0 +1,25 @@
+digraph G {
+    rankdir=LR; // Left to right
+
+    node [shape=box]; // Sets the shape of all nodes to boxes
+
+    // Defining nodes
+    Init [label="init_datastructures"];
+    FuncA [label="function_a"];
+    FuncB [label="function_b"];
+    FuncC [label="function_c"];
+    FuncD [label="function_d"];
+    Print [label="print_results_to_file"];
+
+    // Defining edges
+    Init -> FuncB [label="u, v"];
+    Init -> FuncD [label="u, v"];
+    FuncB -> FuncA [label="x"];
+    FuncD -> FuncC [label="s"];
+    FuncA -> FuncC [label="y"];
+    FuncB -> FuncC [label="x"];
+    FuncC -> Print [label="z"];
+    FuncA -> Print [label="y"];
+    FuncB -> Print [label="x"];
+    FuncD -> Print [label="s"];
+}

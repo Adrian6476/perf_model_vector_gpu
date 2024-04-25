@@ -18,5 +18,5 @@ echo "Reset PERF_GROUPS: ${PERF_GROUPS[@]}"
 for GROUP in "${PERF_GROUPS[@]}"
 do
     echo "Running group: $GROUP"
-    likwid-perfctr -C 0 -g $GROUP -m ./number_crunching_likwid $N > "number_crunching_likwid_$GROUP.out"
+    likwid-perfctr -C 0 -g $GROUP -m ./number_crunching_likwid $N > "likwid_output/number_crunching_likwid_$GROUP.out"
 done

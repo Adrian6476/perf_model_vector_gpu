@@ -36,7 +36,7 @@ ax.set_title('Task 1.2: Function Execution Time vs Input Size (N)', fontsize=16)
 ax.legend(frameon=True, loc='best', fontsize=10)
 
 # Export as vector graphic for best quality
-plt.savefig('plots/Task 1.2: Function Execution Time vs Input Size (N).png')
+plt.savefig('../../plots/Task 1.2: Function Execution Time vs Input Size (N).png')
 
 # Show plot
 plt.show()

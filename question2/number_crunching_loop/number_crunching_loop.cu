@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
-#include "tools.cuh"
+#include "../tools.cuh"
 
 __global__ void function_a_kernel(const double* A, const double* x, double* y, const int N) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
